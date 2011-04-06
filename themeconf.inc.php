@@ -25,7 +25,7 @@ function Pure_autumn_cat($tpl_thumbnails_var)
 }
 function Pure_autumn_prefilter_cat($content, &$smarty)
 {
-  $search = '#<li>[\r\t\n]*<div class="thumbnailCategory">#';
+  $search = '#<li>[\s]*<div class="thumbnailCategory">#';
   
   $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >
 	<div class="thumbnailCategory">';
@@ -45,7 +45,7 @@ function Pure_autumn_thumbnails($tpl_thumbnails_var)
 
 function Pure_autumn_prefilter_thumbnails($content, &$smarty)
 {
-  $search = '#<li>[\r\t\n]*<span class="wrap1">#';
+  $search = '#<li>[\s]*<span class="wrap1">#';
   
   $replacement = '<li class="thumb_{"1"|mt_rand:5}"  >
 	<span class="wrap1">';
