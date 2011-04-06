@@ -60,6 +60,9 @@ border-width:medium 1px 1px medium;
  background-position:bottom left;
 }
 
+.thumbnails .wrap2 A {
+	padding:8px;
+}
 /*--------menu--------------*/
 #table_content, .table_menu, #table_mbLinks, #table_mbCategories, #table_mbTags, #table_mbSpecials, #table_mbMenu, #table_mbIdentification {
 width:100%;
