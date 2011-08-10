@@ -521,6 +521,13 @@ color:black;
  background-position:-180px 100%;
 
 }
+.navThumb img, #theImage img {
+    border-left: 2px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC;
+    border-right: 2px solid #D9E2F0;
+    border-top: 2px solid #D9E2F0;
+}
+
 #comments .description {
   border-left: 2px solid #696969;
   background-color: #fff;
