@@ -25,11 +25,19 @@ function Pure_autumn_cat($tpl_thumbnails_var)
 }
 function Pure_autumn_prefilter_cat($content, &$smarty)
 {
-  $search = '#<li>[\s]*<div class="thumbnailCategory">#';
-  
-  $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >
+  $pwgversion=str_replace('.','',PHPWG_VERSION);
+  $pwgversion_array=explode('.', PHPWG_VERSION);
+  if ($pwgversion_array[0].$pwgversion_array[1]=="23")
+  {
+    $search = '#<li>[\s]*<div class="thumbnailCategory">#';
+    $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >
 	<div class="thumbnailCategory">';
-
+  }
+  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24")
+  {
+    $search = '#<li class="\{if \$smarty\.foreach\.comment_loop\.index is odd\}odd\{else\}even\{/if\}">#';
+    $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >';
+  }
   return preg_replace($search, $replacement, $content);
 }
 
@@ -45,10 +53,22 @@ function Pure_autumn_thumbnails($tpl_thumbnails_var)
 
 function Pure_autumn_prefilter_thumbnails($content, &$smarty)
 {
+  $pwgversion=str_replace('.','',PHPWG_VERSION);
+  $pwgversion_array=explode('.', PHPWG_VERSION);
+  if ($pwgversion_array[0].$pwgversion_array[1]=="23")
+  {
   $search = '#<li>[\s]*<span class="wrap1">#';
   
   $replacement = '<li class="thumb_{"1"|mt_rand:5}"  >
 	<span class="wrap1">';
+  }
+  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24")
+  {
+  $search = '#<li>[\s]*<span class="wrap1">#';
+  
+  $replacement = '<li class="thumb_{"1"|mt_rand:5}"  >
+	<span class="wrap1">';
+  }
 
   return preg_replace($search, $replacement, $content);
 }
