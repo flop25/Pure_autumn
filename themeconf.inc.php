@@ -33,9 +33,9 @@ function Pure_autumn_prefilter_cat($content, &$smarty)
     $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >
 	<div class="thumbnailCategory">';
   }
-  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24")
+  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24" or $pwgversion_array[0].$pwgversion_array[1]=="25" )
   {
-    $search = '#<li class="\{if \$smarty\.foreach\.comment_loop\.index is odd\}odd\{else\}even\{/if\}">#';
+    $search = '#<li class="\{if \$smarty\.foreach.*odd\{else\}even\{/if\}">#s';
     $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >';
   }
   return preg_replace($search, $replacement, $content);
