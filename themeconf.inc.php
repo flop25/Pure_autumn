@@ -62,7 +62,7 @@ function Pure_autumn_prefilter_thumbnails($content, &$smarty)
   $replacement = '<li class="thumb_{"1"|mt_rand:5}"  >
 	<span class="wrap1">';
   }
-  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24")
+  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24" or $pwgversion_array[0].$pwgversion_array[1]=="25")
   {
   $search = '#<li>[\s]*<span class="wrap1">#';
   
