@@ -14,6 +14,7 @@ $themeconf = array(
   'icon_dir'      => 'themes/Pure_default/icon',
   'mime_icon_dir' => 'themes/Pure_default/icon/mimetypes/',
   'local_head' => 'local_head.tpl',
+  'colorscheme' => 'clear',
 );
 /** mainpage_categories.tpl **/
 add_event_handler('loc_end_index_category_thumbnails', 'Pure_autumn_cat');
