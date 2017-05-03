@@ -26,18 +26,20 @@ function Pure_autumn_cat($tpl_thumbnails_var)
 }
 function Pure_autumn_prefilter_cat($content, &$smarty)
 {
-  $pwgversion=str_replace('.','',PHPWG_VERSION);
-  $pwgversion_array=explode('.', PHPWG_VERSION);
-  if ($pwgversion_array[0].$pwgversion_array[1]=="23")
+  if (get_branch_from_version(PHPWG_VERSION) == '2.3')
   {
     $search = '#<li>[\s]*<div class="thumbnailCategory">#';
     $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >
 	<div class="thumbnailCategory">';
   }
-  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24" or $pwgversion_array[0].$pwgversion_array[1]=="25" or $pwgversion_array[0].$pwgversion_array[1]=="26" or $pwgversion_array[0].$pwgversion_array[1]=="27"  or $pwgversion_array[0].$pwgversion_array[1]=="28" )
+  elseif (version_compare(PHPWG_VERSION, '2.4', '>='))
   {
     $search = '#<li class="\{if \$smarty\.foreach.*odd\{else\}even\{/if\}">#s';
     $replacement = '<li class="{cycle values="cat_1,cat_2,cat_3,cat_4"}" >';
+  }
+  else
+  {
+    die('Theme not compatible');
   }
   return preg_replace($search, $replacement, $content);
 }
@@ -54,21 +56,23 @@ function Pure_autumn_thumbnails($tpl_thumbnails_var)
 
 function Pure_autumn_prefilter_thumbnails($content, &$smarty)
 {
-  $pwgversion=str_replace('.','',PHPWG_VERSION);
-  $pwgversion_array=explode('.', PHPWG_VERSION);
-  if ($pwgversion_array[0].$pwgversion_array[1]=="23")
+  if (get_branch_from_version(PHPWG_VERSION) == '2.3')
   {
   $search = '#<li>[\s]*<span class="wrap1">#';
   
   $replacement = '<li class="thumb_{"1"|mt_rand:5}"  >
 	<span class="wrap1">';
   }
-  elseif ($pwgversion_array[0].$pwgversion_array[1]=="24" or $pwgversion_array[0].$pwgversion_array[1]=="25" or $pwgversion_array[0].$pwgversion_array[1]=="26" or $pwgversion_array[0].$pwgversion_array[1]=="27" or $pwgversion_array[0].$pwgversion_array[1]=="28")
+  elseif (version_compare(PHPWG_VERSION, '2.4', '>='))
   {
   $search = '#<li>[\s]*<span class="wrap1">#';
   
   $replacement = '<li class="thumb_{"1"|mt_rand:5}"  >
 	<span class="wrap1">';
+  }
+  else
+  {
+    die('Theme not compatible');
   }
 
   return preg_replace($search, $replacement, $content);
