@@ -24,7 +24,7 @@ function Pure_autumn_cat($tpl_thumbnails_var)
     $template->set_prefilter('index_category_thumbnails', 'Pure_autumn_prefilter_cat');
 		return $tpl_thumbnails_var;
 }
-function Pure_autumn_prefilter_cat($content, &$smarty)
+function Pure_autumn_prefilter_cat($content)
 {
   $pwgversion=str_replace('.','',PHPWG_VERSION);
   $pwgversion_array=explode('.', PHPWG_VERSION);
@@ -52,7 +52,7 @@ function Pure_autumn_thumbnails($tpl_thumbnails_var)
 		return $tpl_thumbnails_var;
 }
 
-function Pure_autumn_prefilter_thumbnails($content, &$smarty)
+function Pure_autumn_prefilter_thumbnails($content)
 {
   $pwgversion=str_replace('.','',PHPWG_VERSION);
   $pwgversion_array=explode('.', PHPWG_VERSION);
